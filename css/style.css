@@ -683,6 +683,7 @@ a:focus {
 .info_section .social-box img {
   width: 35px;
   margin-right: 5px;
+  color: #1b3374;
 }
 
 .form_container form {
@@ -759,6 +760,21 @@ a:focus {
 
 .footer_section a {
   color: #f9fcfb;
+}
+.contact-tables {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.contact-tables th {
+  text-align: left;
+  padding-right: 15px;
+  vertical-align: top;
+}
+
+.contact-tables td {
+  padding-bottom: 10px;
+  width: 30%;
 }
 
 /* end footer section*/
