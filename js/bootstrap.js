@@ -4433,3 +4433,21 @@
 
 }));
 //# sourceMappingURL=bootstrap.js.map
+
+$(document).ready(function() {
+  // Add click handler for smooth scroll buttons
+  $('[data-scroll-to]').on('click', function(e) {
+    e.preventDefault();
+    
+    // Get target section from data attribute
+    const targetId = $(this).data('scroll-to');
+    const $target = $(targetId);
+    
+    if ($target.length) {
+      // Animate scroll to target section
+      $('html, body').animate({
+        scrollTop: $target.offset().top - 50 // Offset by 50px to account for fixed headers
+      }, 800, 'swing');
+    }
+  });
+});
