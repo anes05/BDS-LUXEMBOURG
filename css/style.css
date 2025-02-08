@@ -165,6 +165,7 @@ a:focus {
   background-image: url(../images/menu.png);
   background-color: #ffffff;
   background-size: 40px;
+  padding-left: 20px;
 }
 
 /*end header section*/
@@ -915,7 +916,38 @@ html {
 .carousel-title:hover {
     color: blue; /* Change text color to blue on hover */
     text-decoration: underline; /* Add underline on hover */
+}.ul-center {
+  max-width: 600px; /* Limits width for readability */
+  margin: 0 auto; /* Centers horizontally */
+  text-align: center; /* Centers text inside */
+  padding: 20px; /* Adds spacing */
 }
+
+.ul-center p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.ul-center ul {
+  list-style: none; /* Removes default bullet points */
+  padding: 0; /* Removes default padding */
+}
+
+.ul-center li {
+  text-align: left; /* Aligns text to the left */
+  font-size: 18px;
+  color: black;
+  padding: 5px 0; /* Adds space between items */
+}
+
+@media (max-width: 768px) {
+  .ul-center {
+      max-width: 90%; /* Makes it more flexible on smaller screens */
+  }
+}
+
+
+
 
 
 
