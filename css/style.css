@@ -826,7 +826,7 @@ a:focus {
 }
 .contact-tables {
   border-collapse: collapse;
-  width: 70%;
+  width: 100%%;
   padding-top: -100px;
 }
 
@@ -834,6 +834,8 @@ a:focus {
   text-align: left;
   padding-right: 15px;
   vertical-align: top;
+  text-align: justify;
+  width: 20%;
 }
 
 .contact-tables td {
@@ -841,6 +843,7 @@ a:focus {
   padding-bottom: 10px;
   width: 80%;
   padding-left: 10%;
+  text-align: justify;
 }
 html {
   scroll-behavior:smooth;
@@ -897,6 +900,7 @@ html {
 /* Form fields */
 .form-group {
   margin-bottom: 15px;
+  width: 100%;
 }
 
 
@@ -916,20 +920,22 @@ html {
 .carousel-title:hover {
     color: blue; /* Change text color to blue on hover */
     text-decoration: underline; /* Add underline on hover */
-}.ul-center {
+}
+.ul-center {
   max-width: 600px; /* Limits width for readability */
   margin: 0 auto; /* Centers horizontally */
   text-align: center; /* Centers text inside */
-  padding: 20px; /* Adds spacing */
+  padding: 20px;
 }
 
 .ul-center p {
   font-size: 20px;
   font-weight: bold;
+  text-align: justify;
 }
 
 .ul-center ul {
-  list-style: none; /* Removes default bullet points */
+  list-style: disc; /* Removes default bullet points */
   padding: 0; /* Removes default padding */
 }
 
@@ -937,7 +943,8 @@ html {
   text-align: left; /* Aligns text to the left */
   font-size: 18px;
   color: black;
-  padding: 5px 0; /* Adds space between items */
+  padding: 5px 0;
+  text-align: justify; /* Adds space between items */
 }
 
 @media (max-width: 768px) {
