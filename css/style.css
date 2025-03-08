@@ -826,8 +826,8 @@ a:focus {
 }
 .contact-tables {
   border-collapse: collapse;
-  width: 100%%;
-  padding-top: -100px;
+  width: 100% ;
+  padding-top:  -100px;
 }
 
 .contact-tables th {
