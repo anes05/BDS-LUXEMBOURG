@@ -347,6 +347,7 @@ a:focus {
 }
 
 .service_section .service_container {
+  align-items: stretch; 
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -408,6 +409,7 @@ a:focus {
  */
  .service_section .service_container .service_box .img-box {
   border-radius: 18px;
+  height: 250px;
   overflow: hidden;
   background: transparent; 
   padding: 0;
