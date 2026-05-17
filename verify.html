@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Confirming your request — LBL Luxembourg SARL</title>
+  <link rel="icon" type="image/png" href="images/lbl_logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 55%, #0f3460 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 2.8rem 2.4rem;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+    }
+
+    .logo {
+      height: 52px;
+      margin-bottom: 2rem;
+    }
+
+    /* Spinner */
+    .spinner {
+      width: 56px;
+      height: 56px;
+      border: 4px solid rgba(255, 255, 255, 0.15);
+      border-top-color: #7c5cbf;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+      margin: 0 auto 1.5rem;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Status icons */
+    .icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.68);
+      line-height: 1.65;
+      font-size: 0.95rem;
+    }
+
+    /* Summary table */
+    .summary {
+      background: rgba(255, 255, 255, 0.09);
+      border-radius: 14px;
+      padding: 1.1rem 1.3rem;
+      margin: 1.6rem 0;
+      text-align: left;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.88rem;
+    }
+
+    .row:last-child {
+      border-bottom: none;
+    }
+
+    .lbl {
+      color: rgba(255, 255, 255, 0.45);
+      white-space: nowrap;
+    }
+
+    .val {
+      color: #fff;
+      font-weight: 500;
+      text-align: right;
+      word-break: break-word;
+    }
+
+    /* Button */
+    .btn {
+      display: inline-block;
+      margin-top: 1.4rem;
+      padding: 0.75rem 2.2rem;
+      background: linear-gradient(135deg, #6f42c1, #9b6bda);
+      color: #fff;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 20px rgba(111, 66, 193, 0.35);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(111, 66, 193, 0.5);
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <img class="logo" src="images/lbl_logo.png" alt="LBL Luxembourg SARL" />
+
+    <!-- Loading -->
+    <div id="stateLoading">
+      <div class="spinner"></div>
+      <h2>Confirming your request…</h2>
+      <p>Please wait while we verify your email and forward your request to LBL Luxembourg SARL.</p>
+    </div>
+
+    <!-- Success -->
+    <div id="stateSuccess" style="display:none;">
+      <div class="icon">✅</div>
+      <h2>Request Confirmed!</h2>
+      <p>Your request has been verified and sent to <strong>LBL Luxembourg SARL</strong>. They will get back to you
+        shortly.</p>
+      <div class="summary" id="summaryBox"></div>
+      <a href="index.html" class="btn">← Back to Home</a>
+    </div>
+
+    <!-- Error -->
+    <div id="stateError" style="display:none;">
+      <div class="icon">❌</div>
+      <h2>Verification Failed</h2>
+      <p id="errMsg">The link is invalid or has expired. Please go back and submit the form again.</p>
+      <a href="contact.html" class="btn">← Back to Contact</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    const EJS_PUBLIC_KEY = "f21hCI9dPV1axalA_";
+    const EJS_SERVICE_ID = "service_w6bl8ya";
+    const EJS_TEMPLATE_OWN = "template_kus04jh";
+
+    emailjs.init({ publicKey: EJS_PUBLIC_KEY });
+
+    function show(id) {
+      ["stateLoading", "stateSuccess", "stateError"].forEach(s =>
+        document.getElementById(s).style.display = s === id ? "block" : "none"
+      );
+    }
+
+    function buildSummary(d) {
+      const rows = [
+        ["Name", d.name],
+        ["Email", d.email],
+        ["Phone", d.phone],
+        ["Service", d.service],
+        ["Message", d.message],
+        ["Submitted", d.timestamp]
+      ];
+      return rows.map(([l, v]) =>
+        `<div class="row"><span class="lbl">${l}</span><span class="val">${v || "—"}</span></div>`
+      ).join("");
+    }
+
+    (async () => {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const encoded = params.get("d");
+        if (!encoded) throw new Error("No data");
+
+        const data = JSON.parse(decodeURIComponent(atob(encoded)));
+
+        // Send the form details to the website owner
+        await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_OWN, {
+          owner_email: "anesmsaddak159@outlook.com",
+          from_name: data.name,
+          from_email: data.email,
+          phone: data.phone,
+          service: data.service,
+          message: data.message,
+          timestamp: data.timestamp
+        });
+
+        document.getElementById("summaryBox").innerHTML = buildSummary(data);
+        show("stateSuccess");
+
+      } catch (err) {
+        console.error(err);
+        if (err.message === "No data") {
+          document.getElementById("errMsg").textContent =
+            "No request data found. Please go back and fill in the contact form again.";
+        }
+        show("stateError");
+      }
+    })();
+  </script>
+</body>
+
+</html>
