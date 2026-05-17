@@ -280,10 +280,36 @@
               <p></p>
             </div>
             <div class="container">
-              <form action="https://formsubmit.co/Mounib.derbali@lbl.lu" method="POST">
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_next" value="http://lbl.lu/succes_email_sent.html" />
 
+              <!-- Step 2: Verification sent feedback (hidden initially) -->
+              <div id="verificationSent" style="display:none; text-align:center; padding:2rem 0;">
+                <div style="font-size:3rem;">📧</div>
+                <h3 style="margin-top:.75rem;">Check your inbox!</h3>
+                <p>A verification email was sent to<br><strong id="sentToEmail" style="color:#6f42c1;"></strong></p>
+                <p class="text-muted" style="font-size:.9rem;">Click <em>"Confirm my request"</em> in that email to send
+                  your request to LBL Luxembourg SARL.</p>
+                <div
+                  style="display:flex;flex-direction:column;gap:.6rem;max-width:280px;margin:1.5rem auto 0;text-align:left;">
+                  <div style="display:flex;align-items:center;gap:.75rem;"><span
+                      style="background:#6f42c1;color:#fff;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;">1</span><span>Check
+                      your email inbox</span></div>
+                  <div style="display:flex;align-items:center;gap:.75rem;"><span
+                      style="background:#6f42c1;color:#fff;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;">2</span><span>Click
+                      "Confirm my request"</span></div>
+                  <div style="display:flex;align-items:center;gap:.75rem;"><span
+                      style="background:#6f42c1;color:#fff;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;">3</span><span>Your
+                      request is sent to LBL Luxembourg</span></div>
+                </div>
+                <button onclick="goBackToForm()"
+                  style="margin-top:1.5rem;background:none;border:1px solid #6f42c1;color:#6f42c1;padding:.5rem 1.25rem;border-radius:50px;font-size:.9rem;cursor:pointer;transition:all .2s;"
+                  onmouseover="this.style.background='#6f42c1';this.style.color='#fff'"
+                  onmouseout="this.style.background='none';this.style.color='#6f42c1'">
+                  ← Go back
+                </button>
+              </div>
+
+              <!-- Step 1: The contact form -->
+              <form id="contactForm" novalidate>
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="inputName4">Name</label>
@@ -306,16 +332,21 @@
                       <option>Liquidation Services</option>
                       <option>Directorship Mandates</option>
                       <option>Ad Hoc Mandates</option>
-                      <option>Other .. </option>
+                      <option>Other ..</option>
                     </select>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputMessage">Message</label>
-                  <input type="text" class="form-control" id="inputMessage" name="message" required />
+                  <textarea class="form-control" id="inputMessage" name="message" rows="3" required></textarea>
                 </div>
+                <div id="formError" class="alert alert-danger mt-2" style="display:none;font-size:.9rem;"></div>
                 <div class="d-flex justify-content-center">
-                  <button type="submit" class="btn btn-primary">Send</button>
+                  <button type="submit" id="submitBtn" class="btn btn-primary">
+                    <span id="submitBtnText">Send</span>
+                    <span id="submitBtnSpinner" class="spinner-border spinner-border-sm ms-2" style="display:none;"
+                      role="status" aria-hidden="true"></span>
+                  </button>
                 </div>
               </form>
             </div>
@@ -369,11 +400,90 @@
         );
       });
     </script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="emailSentToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="polite"
+        aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            ✅ Email sent successfully!
+          </div>
+          <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+  </body>
 
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    const EJS_PUBLIC_KEY = "f21hCI9dPV1axalA_";
+    const EJS_SERVICE_ID = "service_w6bl8ya";
+    const EJS_TEMPLATE_VER = "template_348qva8";
 
+    emailjs.init({ publicKey: EJS_PUBLIC_KEY });
 
-</body>
+    document.getElementById("contactForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-</html>
+      const btn = document.getElementById("submitBtn");
+      const btnTxt = document.getElementById("submitBtnText");
+      const spinner = document.getElementById("submitBtnSpinner");
+      const errBox = document.getElementById("formError");
+
+      const data = {
+        name: document.getElementById("inputName4").value.trim(),
+        email: document.getElementById("inputEmail4").value.trim(),
+        phone: document.getElementById("inputNumber4").value.trim(),
+        service: document.getElementById("inputState").value || "Not specified",
+        message: document.getElementById("inputMessage").value.trim(),
+        timestamp: new Date().toLocaleString("en-GB", { timeZone: "Europe/Luxembourg" })
+      };
+
+      errBox.style.display = "none";
+      btn.disabled = true;
+      btnTxt.textContent = "Sending…";
+      spinner.style.display = "inline-block";
+
+      // Build the verify link with all form data encoded in the URL
+      const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+      const href = window.location.href.split('?')[0];
+      const base = href.substring(0, href.lastIndexOf('/') + 1);
+      const verifyLink = base + "verify.html?d=" + encoded;
+
+      try {
+        await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_VER, {
+          to_name: data.name,
+          to_email: data.email,
+          verify_link: verifyLink
+        });
+
+        // Show "check inbox" state
+        document.getElementById("contactForm").style.display = "none";
+        document.getElementById("sentToEmail").textContent = data.email;
+        document.getElementById("verificationSent").style.display = "block";
+
+      } catch (err) {
+        console.error(err);
+        errBox.textContent = "Could not send the verification email. Please try again or contact us directly.";
+        errBox.style.display = "block";
+        btn.disabled = false;
+        btnTxt.textContent = "Send";
+        spinner.style.display = "none";
+      }
+    });
+    function goBackToForm() {
+      document.getElementById("verificationSent").style.display = "none";
+      document.getElementById("contactForm").style.display = "block";
+
+      // Reset button state
+      const btn = document.getElementById("submitBtn");
+      const btnTxt = document.getElementById("submitBtnText");
+      const spinner = document.getElementById("submitBtnSpinner");
+
+      btn.disabled = false;
+      btnTxt.textContent = "Send";
+      spinner.style.display = "none";
+    }
+  </script>
+
+  </html>
