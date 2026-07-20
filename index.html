@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
@@ -12,7 +12,7 @@
     content="Corporate Governance, Business Restructuring, Liquidation Services, Directorship Mandates, Interim Management, LBL Luxembourg" />
   <meta name="author" content="LBL Luxembourg" />
   <meta name="description"
-    content="Founded in 2019, LBL Luxembourg provides expert solutions in corporate governance, business restructuring, and liquidation services." />
+    content="LBL Luxembourg SARL provides expert corporate governance, liquidation services, directorship mandates and ad hoc mandates for regulated and non-regulated entities in Luxembourg." />
 
   <!-- Canonical Tag -->
   <link rel="canonical" href="https://lbl.lu/" />
@@ -20,16 +20,18 @@
   <!-- Open Graph / Facebook Meta Tags -->
   <meta property="og:url" content="https://lbl.lu/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="LBL Luxembourg | Corporate Governance & Restructuring">
+  <meta property="og:site_name" content="LBL Luxembourg SARL">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="LBL Luxembourg SARL | Corporate Governance & Liquidation Services in Luxembourg">
   <meta property="og:description"
-    content="Founded in 2019, LBL Luxembourg provides expert solutions in corporate governance, business restructuring, and liquidation services.">
+    content="LBL Luxembourg SARL provides expert corporate governance, liquidation services, directorship mandates and ad hoc mandates for regulated and non-regulated entities in Luxembourg.">
   <meta property="og:image" content="https://lbl.lu/images/lbl_logo.png">
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="LBL Luxembourg | Corporate Governance & Restructuring">
+  <meta name="twitter:title" content="LBL Luxembourg SARL | Corporate Governance & Liquidation Services in Luxembourg">
   <meta name="twitter:description"
-    content="Founded in 2019, LBL Luxembourg provides expert solutions in corporate governance, business restructuring, and liquidation services.">
+    content="LBL Luxembourg SARL provides expert corporate governance, liquidation services, directorship mandates and ad hoc mandates for regulated and non-regulated entities in Luxembourg.">
   <meta name="twitter:image" content="https://lbl.lu/images/lbl_logo.png">
 
   <!-- JSON-LD Structured Data -->
@@ -41,6 +43,7 @@
     "image": "https://lbl.lu/images/vec_logo.svg",
     "url": "https://lbl.lu/",
     "telephone": "+352 621 298 078",
+    "email": "mounib.derbali@lbl.lu",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "8-10 Mathias Hardt",
@@ -48,6 +51,8 @@
       "postalCode": "L-1717",
       "addressCountry": "LU"
     },
+    "areaServed": "Luxembourg",
+    "sameAs": ["https://www.linkedin.com/in/derbali-mounib-5715496"],
     "description": "LBL Luxembourg provides expert solutions in corporate governance, business restructuring, and liquidation services.",
     "foundingDate": "2019"
   }
@@ -57,9 +62,12 @@
 
 
 
-  <title>LBL - LUXEMBOURG</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>LBL Luxembourg SARL | Corporate Governance & Liquidation Services in Luxembourg</title>
   <link rel="icon" type="image/png" href="images/lbl_logo.png" />
+
+  <!-- preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
@@ -72,7 +80,7 @@
   <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&amp;display=swap"
     rel="stylesheet" />
   <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/style.css?v=1783783172" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
@@ -86,12 +94,12 @@
           <div class="col-lg-8">
             <nav class="navbar navbar-expand-lg custom_nav-container imggg">
               <!-- <img class="navbar-img" src="images/mounib.png" alt=""> -->
-              <img src="images/vec_logo.svg" alt="LBL Luxembourg SARL"
+              <img src="images/vec_logo.svg" alt="LBL Luxembourg SARL" width="286" height="275"
                 style="height: 150px; width: auto; margin-left: -20px; margin-right: -30px;">
               <!--  <a class="navbar-brand" href="index.html">
               <span>
                   BigWing
-                </span> 
+                </span>
               </a> -->
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -112,11 +120,11 @@
                       <a class="nav-link dropdown-toggle" href="service.html" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>Services</strong></a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="liquidation-services.html"><strong>Liquidation
-                            Services</strong></a>
-                        <a class="dropdown-item" href="directorship-mandates.html"><strong>Directorship
-                            Mandates</strong></a>
-                        <a class="dropdown-item" href="ad-hoc-mandates.html"><strong>Ad Hoc Mandates</strong> </a>
+                        <a class="dropdown-item dropdown-item-all" href="service.html">All Services</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="liquidation-services.html">Liquidation Services</a>
+                        <a class="dropdown-item" href="directorship-mandates.html">Directorship Mandates</a>
+                        <a class="dropdown-item" href="ad-hoc-mandates.html">Ad Hoc Mandates</a>
                       </div>
                     </li>
                     <li class="nav-item">
@@ -143,14 +151,9 @@
                     <h1>
                       LBL Luxembourg
                     </h1>
-                    <p style="font-size: 18px; text-align: justify;">
-                      Founded in 2019, LBL Luxembourg is a specialized professional services firm based in Luxembourg,
-                      providing expert solutions in corporate governance and business restructuring. <br><br>LBL
-                      Luxembourg combines over 20 years of professional experience with deep expertise in both regulated
-                      and non-regulated environments. <br><br> As a trusted partner in the Luxembourg business
-                      community, we consistently maintain the highest standards of professionalism and compliance while
-                      serving our international client base.
-
+                    <p style="font-size: 18px; text-align: left;">
+                      Founded in 2019, LBL Luxembourg is a specialized professional services firm combining over 20
+                      years of experience in corporate governance and business restructuring in Luxembourg.
                     </p>
                     <div class="btn-box">
                       <a href="#services" class="btn-1" id="scrollToServices">
@@ -161,7 +164,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="slider_img-box">
-                    <img src="images/slider-img.png" alt="" />
+                    <img src="images/slider-img.png" alt="LBL Luxembourg corporate governance and liquidation services" />
                   </div>
                 </div>
               </div>
@@ -172,26 +175,25 @@
               <div class="row">
                 <div class="col-lg-5 col-md-6">
                   <div class="slider_detail-box">
-                    <h1>
+                    <h2>
 
                       <a href="liquidation-services.html" class="carousel-title">Liquidation Services</a>
-                    </h1>
-                    <p style="font-size: 18px; text-align: justify;">
+                    </h2>
+                    <p style="font-size: 18px; text-align: left;">
                       At LBL Luxembourg SARL, we specialize in providing comprehensive liquidation services for
-                      regulated and non-regulated entities in Luxembourg. <br><br> Our team is dedicated to guiding you
-                      through each step of the liquidation process, ensuring a smooth and efficient experience.
+                      regulated and non-regulated entities in Luxembourg, ensuring a smooth and efficient experience
+                      from start to finish.
                     </p>
-
-                    <!--                     <div class="btn-box">
-                      <a href="" class="btn-1">
-                        Read More
+                    <div class="btn-box">
+                      <a href="liquidation-services.html" class="btn-1">
+                        Learn More →
                       </a>
-                    </div> -->
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="slider_img-box">
-                    <img src="images/slider-img.png" alt="" />
+                    <img src="images/slider-img.png" alt="Liquidation services in Luxembourg" loading="lazy" />
                   </div>
                 </div>
               </div>
@@ -202,22 +204,23 @@
               <div class="row">
                 <div class="col-lg-5 col-md-6">
                   <div class="slider_detail-box">
-                    <h1>
+                    <h2>
                       <a href="directorship-mandates.html" class="carousel-title">Directorship mandates</a>
-                    </h1>
-                    <p style="font-size: 18px; text-align: justify;">
-                      With a commitment to transparency and accountability, we tailor our directorship solutions to
-                      align with your business goals, ensuring seamless integration and optimal performance.</p>
-                    <!--                     <div class="btn-box">
-                      <a href="" class="btn-1">
-                        Read More
+                    </h2>
+                    <p style="font-size: 18px; text-align: left;">
+                      Independent Non-Executive Directors bringing strategic guidance and governance expertise to
+                      regulated and non-regulated entities, with a commitment to transparency and accountability.
+                    </p>
+                    <div class="btn-box">
+                      <a href="directorship-mandates.html" class="btn-1">
+                        Learn More →
                       </a>
-                    </div> -->
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="slider_img-box">
-                    <img src="images/slider-img.png" alt="" />
+                    <img src="images/slider-img.png" alt="Directorship mandates in Luxembourg" loading="lazy" />
                   </div>
                 </div>
               </div>
@@ -228,27 +231,23 @@
               <div class="row">
                 <div class="col-lg-5 col-md-6">
                   <div class="slider_detail-box">
-                    <h1>
+                    <h2>
                       <a href="ad-hoc-mandates.html" class="carousel-title">Ad Hoc Mandates</a>
-                    </h1>
-                    <p style="font-size: 18px; text-align: justify;">
-                      At LBL Luxembourg, we provide ad hoc mandates to help businesses in Luxembourg tackle specific
-                      challenges with precision and expertise.
-                      <br><br>
-                      Whether you need to resolve a regulatory issue, manage a critical project, or address an urgent
-                      operational matter, our tailored solutions deliver results quickly and efficiently.
+                    </h2>
+                    <p style="font-size: 18px; text-align: left;">
+                      Flexible, solution-focused support including interim management, crisis handling and corporate
+                      restructuring — tailored solutions that deliver results quickly and efficiently.
                     </p>
-
-                    <!--                     <div class="btn-box">
-                      <a href="" class="btn-1">
-                        Read More
+                    <div class="btn-box">
+                      <a href="ad-hoc-mandates.html" class="btn-1">
+                        Learn More →
                       </a>
-                    </div> -->
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="slider_img-box">
-                    <img src="images/slider-img.png" alt="" />
+                    <img src="images/slider-img.png" alt="Ad hoc mandates in Luxembourg" loading="lazy" />
                   </div>
                 </div>
               </div>
@@ -267,6 +266,7 @@
     </section>
     <!-- end slider section -->
   </div>
+  <main>
   <!-- welcome section -->
 
 
@@ -311,15 +311,15 @@
         <div class="service_box">
           <div class="img-box">
             <a href="liquidation-services.html">
-              <img src="images/s-1.jpg" alt="Liquidation Services" />
+              <img src="images/liquidation_3d.jpg" alt="Liquidation Services" width="1440" height="960" loading="lazy" style="filter: contrast(0.8) saturate(0.85);" />
             </a>
           </div>
           <div class="detail-box">
-            <h4>
+            <h3>
               Liquidation <br /> Services
-            </h4>
-            <p style="text-align: center;">
-              We provide comprehensive liquidation management, from initial assessment through completion and
+            </h3>
+            <p style="text-align: justify;">
+              We always provide comprehensive liquidation management, from initial assessment through completion and
               post-liquidation tax authority follow-up. Our proven track record covers multiple jurisdictions and
               industries.
             </p>
@@ -328,14 +328,14 @@
         <div class="service_box">
           <div class="img-box">
             <a href="directorship-mandates.html">
-              <img src="images/image2.png" alt="" />
+              <img src="images/directorship_3d.jpg" alt="Directorship mandates icon" width="626" height="626" loading="lazy" style="filter: contrast(0.8) saturate(0.85);" />
             </a>
           </div>
           <div class="detail-box">
-            <h4>
+            <h3>
               Directorship<br /> Mandates <br />
 
-            </h4>
+            </h3>
             <p style="text-align: justify;">
               Our experienced professionals serve as Independent Non-Executive Directors (INED), bringing strategic
               guidance and governance expertise to both regulated and non-regulated entities.
@@ -345,14 +345,14 @@
         <div class="service_box">
           <div class="img-box">
             <a href="ad-hoc-mandates.html">
-              <img src="images/s-3.jpg" alt="" />
+              <img src="images/ad_hoc_3d.jpg" alt="Ad hoc mandates icon" width="1400" height="1026" loading="lazy" style="filter: contrast(0.8) saturate(0.85);" />
             </a>
           </div>
           <div class="detail-box">
-            <h4>
+            <h3>
               Ad Hoc<br />
               Mandates
-            </h4>
+            </h3>
             <p style="text-align: justify;">
               We offer flexible, solution-focused services including interim management, crisis handling, and corporate
               restructuring support.
@@ -381,7 +381,7 @@
       </div>
       <div class="layout_padding2">
         <div class="img-box">
-          <img src="images/problem.jpg" alt="" />
+          <img src="images/problem.jpg" alt="LBL Luxembourg team commitment to professional excellence" width="591" height="357" loading="lazy" />
         </div>
         <div class="ul-center">
           <p>At LBL Luxembourg, we are committed to:</p>
@@ -419,7 +419,7 @@
         <div class="row">
           <div class="col-md-3 col-sm-6">
             <div class="img-box">
-              <img src="images/smiley.png" alt="" />
+              <img src="images/smiley.png" alt="Satisfied clients icon" width="58" height="58" loading="lazy" />
             </div>
             <div class="detail-box">
               <h3>
@@ -432,7 +432,7 @@
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="img-box">
-              <img src="images/monitor.png" alt="" />
+              <img src="images/monitor.png" alt="Combined professional experience icon" width="58" height="52" loading="lazy" />
             </div>
             <div class="detail-box">
               <h3>
@@ -445,7 +445,7 @@
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="img-box">
-              <img src="images/multiple-users-silhouette.png" alt="" />
+              <img src="images/multiple-users-silhouette.png" alt="Successful liquidations icon" width="58" height="48" loading="lazy" />
             </div>
             <div class="detail-box">
               <h3>
@@ -458,7 +458,7 @@
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="img-box">
-              <img src="images/bar-chart.png" alt="" />
+              <img src="images/bar-chart.png" alt="Client retention rate icon" width="58" height="50" loading="lazy" />
             </div>
             <div class="detail-box">
               <h3>
@@ -476,6 +476,7 @@
 
 
   <!-- end why section -->
+  </main>
 
   <!-- client section -->
   <!-- What our client say section:  -->
@@ -577,11 +578,12 @@
   </section> -->
   <!-- end client section -->
   <!-- contact section -->
+  <footer>
   <br><br>
   <!-- contact section -->
   <hr>
   <br><br>
-  <h1 class="contact_heading"><strong>Get in touch with our people</strong></h1>
+  <h2 class="contact_heading"><strong>Get in touch with our people</strong></h2>
   <div class="container">
     <div class="row">
       <!-- Contact Section -->
@@ -589,12 +591,12 @@
         <div class="contact_info_wrapper">
           <section class="info_section layout_padding2-bottom">
             <div class="container">
-              <h2><strong>LBL Luxembourg SARL</strong></h2>
+              <h3><strong>LBL Luxembourg SARL</strong></h3>
             </div>
             <div class="container info_content">
               <div class="row">
                 <div class="col-12">
-                  <h5>Contact Us</h5>
+                  <h4>Contact Us</h4>
                   <table class="contact-tables">
                     <tr>
                       <th>Address:</th>
@@ -618,7 +620,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="social-box">
                   <a href="https://www.linkedin.com/in/derbali-mounib-5715496" target="_blank">
-                    <img src="images/linkedin.png" alt="LinkedIn Profile" />
+                    <img src="images/linkedin.png" alt="LinkedIn Profile" width="46" height="46" loading="lazy" />
                   </a>
                 </div>
               </div>
@@ -709,7 +711,7 @@
 
     </div>
   </div>
-
+  </footer>
 
 
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
@@ -740,21 +742,6 @@
       requestAnimationFrame(animation);
     });
   </script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      // Enable hover dropdown
-      $('.nav-item.dropdown').hover(
-        function () {
-          $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(300);
-        },
-        function () {
-          $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(300);
-        }
-      );
-    });
-  </script>
-
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
     <div id="emailSentToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="polite"
       aria-atomic="true">
